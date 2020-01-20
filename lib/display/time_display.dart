@@ -3,10 +3,10 @@ part of display;
 class TimeDisplay extends StatelessWidget {
   final String hour;
   final String minute;
-  final String second;
+
   final bool is24Hour;
 
-  TimeDisplay(this.hour, this.minute, this.second, {this.is24Hour = false});
+  TimeDisplay(this.hour, this.minute, {this.is24Hour = false});
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +20,9 @@ class TimeDisplay extends StatelessWidget {
               ...displayWidget(context, hour),
               SizedBox(width: 24),
               ...displayWidget(context, minute),
-              // SizedBox(width: 24),
-              // ...displayWidget(context, second),
+              if (!is24Hour) SizedBox(width: 24),
               if (!is24Hour)
-                SizedBox(width: 24),
-              if (!is24Hour)
-                ...displayWidget(context, 'p'),
+                ...displayWidget(context, DateTime.now().hour < 12 ? 'A' : 'P'),
               Spacer(),
             ],
           ),

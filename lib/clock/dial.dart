@@ -46,7 +46,6 @@ class _DialState extends State<Dial> {
                   child: TimeDisplay(
                     hourString,
                     DateTime.now().minute.toString(),
-                    DateTime.now().second.toString(),
                     is24Hour: clockModel.is24HourFormat,
                   ),
                 ),
